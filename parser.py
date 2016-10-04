@@ -6,4 +6,9 @@ text = ''
 for pageNum in range(0, pdfReader.numPages):
     pageObj = pdfReader.getPage(pageNum)
     text = text + pageObj.extractText()
-print(text)
+pattern = 'elephant'
+if text.find(pattern) == -1:
+    print('Failure')
+else:
+    print('Found')
+#print(text)
