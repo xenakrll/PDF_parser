@@ -3,7 +3,7 @@ import os
 
 input_pat = input("Choose pattern to look for: ")
 patterns = input_pat.split()
-dir = '/home/xenakrll/Documents/articles/for_overview/2000-2005'
+dir = '/home/xenakrll/Documents/articles/for_overview'
 for filename in os.listdir(dir):
     pdfFileObj = open(os.path.join(dir)+'/'+filename, 'rb')
     try:
@@ -13,11 +13,7 @@ for filename in os.listdir(dir):
             pageObj = pdfReader.getPage(pageNum)
             text = text + pageObj.extractText()
         for pattern in patterns:
-            if text.find(pattern) == -1:
-                print(filename+':  '+'Pattern '+pattern+' not found')
-            else:
-                print(filename+':  '+pattern+' found')
+            if text.find(pattern) != -1:
+                print(filename+':  '+'Pattern '+pattern+'  found')
     except Exception:
         print(filename+': file is unreadable')
-
-#print(text)
